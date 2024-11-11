@@ -1,0 +1,11 @@
+# .gitignore 파일 설정
+
+# 모든 폴더 및 파일 무시
+*
+
+# 예외: sub2 폴더 및 그 안의 파일 허용
+!sub2/
+!sub2/**
+
+# 예외: .gitignore 파일은 무시하지 않음
+!.gitignore
