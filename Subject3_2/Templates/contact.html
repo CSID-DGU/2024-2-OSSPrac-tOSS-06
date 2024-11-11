@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연락 정보</title>
+    <style>
+        .contact-info {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-info">
+        <h2>연락처 정보</h2>
+        <p><strong>전화번호:</strong> {{ contact.phone }}</p>
+        <p><strong>이메일:</strong> <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
+    </div>
+</body>
+</html>
