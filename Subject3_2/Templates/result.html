@@ -45,7 +45,7 @@
     <div class="container">
         {% for name, student_number in students %}
             <div class="student-block">
-                <p><strong>{{ picture }}</strong></p>
+                <img src="{{ url_for('static', filename='picture/' + student.picture) }}" alt="Profile Picture">
                 <p><strong>이름:</strong> {{ name }}</p>
                 <p><strong>역할:</strong> {{ role | join(', ') }}</p>
                 <p><strong>학번:</strong> {{ student_number }}</p>
