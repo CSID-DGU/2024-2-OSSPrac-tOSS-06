@@ -57,10 +57,10 @@
             <div class="student-block">
                 <img src="{{ url_for('static', filename='picture/' + picture_filename) }}" alt="{{ name }}" style="width: 100%; height: auto; border-radius: 5px;">
                 <p><strong>이름:</strong> {{ name }}</p>
-                <p><strong>역할:</strong> {{ role }}</p>
-                <p><strong>학과:</strong> {{ major }}</p>
+                <p><strong>역할:</strong> {{ Role }}</p>
+                <p><strong>학과:</strong> {{ Major }}</p>
                 <p><strong>전화번호:</strong> {{ PhoneNumber }}</p>
-                <p><strong>이메일:</strong> {{ email }}</p>
+                <p><strong>이메일:</strong> {{ Email }}</p>
             </div>  
         {% endfor %}
     </div>

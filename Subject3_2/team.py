@@ -20,10 +20,10 @@ def input():
 def result():
     # 각 학생의 이름과 학번 데이터를 리스트로 받음
     names = request.form.getlist('name[]')
-    roles = request.form.getlist('role[]')
-    majors = request.form.getlist('major[]')
+    roles = request.form.getlist('Role[]')
+    majors = request.form.getlist('Major[]')
     phone_numbers = request.form.getlist('PhoneNumber[]')
-    emails = request.form.getlist('email[]')
+    emails = request.form.getlist('Email[]')
     
     # 학생 정보 리스트 생성
     students = []
