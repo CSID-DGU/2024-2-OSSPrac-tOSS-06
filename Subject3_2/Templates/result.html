@@ -53,14 +53,14 @@
     </audio>
     
     <div class="container">
-        {% for name, Role, Major, PhoneNumber, Email in students %}
+        {% for name, role, major, PhoneNumber, email in students %}
             <div class="student-block">
                 <p><strong>{{ picture }}</strong></p>
                 <p><strong>이름:</strong> {{ name }}</p>
-                <p><strong>역할:</strong> {{ Role }}</p>
-                <p><strong>학과:</strong> {{ Major }}</p>
+                <p><strong>역할:</strong> {{ role }}</p>
+                <p><strong>학과:</strong> {{ major }}</p>
                 <p><strong>전화번호:</strong> {{ PhoneNumber }}</p>
-                <p><strong>이메일:</strong> {{ Email }}</p>
+                <p><strong>이메일:</strong> {{ email }}</p>
             </div>  
         {% endfor %}
     </div>

@@ -12,10 +12,10 @@
         <div id="personContainer">
             <div class="person-block">
                 <p>이름: <input type="text" name="name[]" required></p>
-                <p>역할: <input type="text" name="Role[]" required></p>
-                <p>학과: <input type="text" name="Major[]" required></p>
+                <p>역할: <input type="text" name="role[]" required></p>
+                <p>학과: <input type="text" name="major[]" required></p>
                 <p>H.P: <input type="text" name="PhoneNumber[]" required></p>
-                <p>이메일: <input type="text" name="Email[]" required></p>
+                <p>이메일: <input type="text" name="email[]" required></p>
             </div>
         </div>
         <button type="button" onclick="addPerson()">추가</button>
@@ -32,10 +32,10 @@
             personBlock.className = "person-block";
             personBlock.innerHTML = `
                 <p>이름: <input type="text" name="name[]" required></p>
-                <p>역할: <input type="text" name="Role[]" required></p>
-                <p>학과: <input type="text" name="Major[]" required></p>
+                <p>역할: <input type="text" name="role[]" required></p>
+                <p>학과: <input type="text" name="major[]" required></p>
                 <p>H.P: <input type="text" name="PhoneNumber[]" required></p>
-                <p>이메일: <input type="text" name="Email[]" required></p>
+                <p>이메일: <input type="text" name="email[]" required></p>
             `;
 
             // 입력 블록을 personContainer에 추가
