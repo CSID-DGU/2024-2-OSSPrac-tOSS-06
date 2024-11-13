@@ -36,11 +36,13 @@ def result():
         # 이름과 일치하는 사진 파일이 존재하지 않으면 기본 이미지 사용
         if not os.path.isfile(picture_path):
             picture_filename = "default.png"
+
+          # 학생 정보와 이미지 파일명을 함께 추가
+        students.append((names[i], roles[i], majors[i], phone_numbers[i], emails[i], picture_filename))
+
     
     # 데이터를 템플릿으로 전달하여 출력 페이지 생성
-    return render_template('result.html', students=zip(names, roles, majors, phone_numbers, emails))
-            
-
+    return render_template('result.html', students=students)
     
 @app.route('/contact')
 def contact_info():

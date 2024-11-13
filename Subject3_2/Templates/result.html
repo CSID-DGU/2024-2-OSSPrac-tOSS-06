@@ -44,7 +44,7 @@
     </script>
 </head>
 <body>
-    <h1>학생 정보 출력</h1>
+    <h1>6팀 tOSS를 소개합니다~</h1>
 
 
     <!-- BGM 재생 -->
@@ -53,9 +53,9 @@
     </audio>
     
     <div class="container">
-        {% for name, Role, Major, PhoneNumber, Email in students %}
+        {% for name, Role, Major, PhoneNumber, Email, picture_filename in students %}
             <div class="student-block">
-                <p><strong>{{ picture }}</strong></p>
+                <img src="{{ url_for('static', filename='picture/' + picture_filename) }}" alt="{{ name }}" style="width: 100%; height: auto; border-radius: 5px;">
                 <p><strong>이름:</strong> {{ name }}</p>
                 <p><strong>역할:</strong> {{ Role }}</p>
                 <p><strong>학과:</strong> {{ Major }}</p>
