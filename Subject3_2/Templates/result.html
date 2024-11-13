@@ -23,6 +23,16 @@
         h1 {
             text-align: center;
         }
+        body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        }
     </style>
     <script>
         function showContactInfo() {
@@ -43,21 +53,19 @@
     </audio>
     
     <div class="container">
-        {% for name, student_number in students %}
+        {% for name, Role, Major, PhoneNumber, Email in students %}
             <div class="student-block">
                 <p><strong>{{ picture }}</strong></p>
                 <p><strong>이름:</strong> {{ name }}</p>
-                <p><strong>역할:</strong> {{ role | join(', ') }}</p>
-                <p><strong>학번:</strong> {{ student_number }}</p>
-                <p><strong>전공:</strong> {{ student_major }}</p>
-                <p><strong>프로그래밍 언어:</strong> {{ languages | join(', ') }}</p>
-                <p><strong>개발 툴:</strong> {{ tools | join(', ') }}</p>
+                <p><strong>역할:</strong> {{ Role }}</p>
+                <p><strong>학과:</strong> {{ Major }}</p>
+                <p><strong>전화번호:</strong> {{ PhoneNumber }}</p>
+                <p><strong>이메일:</strong> {{ Email }}</p>
             </div>  
         {% endfor %}
     </div>
     <footer>
-        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button> 
-            <button onclick="openContactPage()"> 팀 연락정보</button> </h5>
+        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button>
     </footer> 
 </body>
 </html>

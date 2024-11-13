@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,7 +12,10 @@
         <div id="personContainer">
             <div class="person-block">
                 <p>이름: <input type="text" name="name[]" required></p>
-                <p>학번: <input type="text" name="StudentNumber[]" required></p>
+                <p>역할: <input type="text" name="Role[]" required></p>
+                <p>학과: <input type="text" name="Major[]" required></p>
+                <p>H.P: <input type="text" name="PhoneNumber[]" required></p>
+                <p>이메일: <input type="text" name="Email[]" required></p>
             </div>
         </div>
         <button type="button" onclick="addPerson()">추가</button>
@@ -30,7 +32,10 @@
             personBlock.className = "person-block";
             personBlock.innerHTML = `
                 <p>이름: <input type="text" name="name[]" required></p>
-                <p>학번: <input type="text" name="StudentNumber[]" required></p>
+                <p>역할: <input type="text" name="Role[]" required></p>
+                <p>학과: <input type="text" name="Major[]" required></p>
+                <p>H.P: <input type="text" name="PhoneNumber[]" required></p>
+                <p>이메일: <input type="text" name="Email[]" required></p>
             `;
 
             // 입력 블록을 personContainer에 추가

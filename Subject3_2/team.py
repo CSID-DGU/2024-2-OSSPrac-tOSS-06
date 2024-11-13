@@ -20,8 +20,10 @@ def input():
 def result():
     # 각 학생의 이름과 학번 데이터를 리스트로 받음
     names = request.form.getlist('name[]')
-    student_numbers = request.form.getlist('StudentNumber[]')
-
+    roles = request.form.getlist('Role[]')
+    majors = request.form.getlist('Major[]')
+    phone_numbers = request.form.getlist('PhoneNumber[]')
+    emails = request.form.getlist('Email[]')
     
     # 학생 정보 리스트 생성
     students = []
@@ -36,7 +38,7 @@ def result():
             picture_filename = "default.png"
     
     # 데이터를 템플릿으로 전달하여 출력 페이지 생성
-    return render_template('result.html', students=students))
+    return render_template('result.html', students=zip(names, roles, majors, phone_numbers, emails))
             
 
     
