@@ -26,6 +26,7 @@ def result():
     # 학생 정보 리스트 생성
     students = []
     for i in range(len(names)):
+    
         # 이름과 동일한 파일명으로 이미지를 찾음
         picture_filename = f"{names[i]}.png"
         picture_path = os.path.join(app.config['UPLOAD_FOLDER'], picture_filename)
@@ -33,9 +34,11 @@ def result():
         # 이름과 일치하는 사진 파일이 존재하지 않으면 기본 이미지 사용
         if not os.path.isfile(picture_path):
             picture_filename = "default.png"
-            
+    
     # 데이터를 템플릿으로 전달하여 출력 페이지 생성
     return render_template('result.html', students=students))
+            
+
     
 @app.route('/contact')
 def contact_info():
