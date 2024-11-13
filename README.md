@@ -12,9 +12,9 @@
 ## 사용 방법
 1. **메인 페이지**에서 "이동" 버튼을 클릭하여 팀원 정보를 입력하는 페이지로 이동합니다.
 2. 이름, 역할, 학과, 연락처, 이메일 등 팀원 정보를 입력한 뒤 "추가" 버튼을 눌러 추가 팀원 정보를 입력할 수 있습니다.
-![팀원 정보 입력](static/images/team_input.png)
+![팀원 정보 입력](Subject3_2/Static/picture/team_input.png)
 3. 모든 팀원 정보를 입력한 후 "제출" 버튼을 클릭하여 결과 페이지로 이동합니다. 결과 페이지에서는 입력한 팀원 정보가 개별 블록으로 표시됩니다.
-![팀원 정보 출력](static/images/team_result.png)
+![팀원 정보 출력](Subject3_2/Static/picture/team_result.png)
 
 ## 주의사항
 - 팀원 사진은 `static/picture/` 폴더에 저장됩니다. 파일명은 팀원의 이름과 동일해야 합니다.
