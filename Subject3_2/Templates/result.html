@@ -53,7 +53,7 @@
     </audio>
     
     <div class="container">
-        {% for name, Role, Major, PhoneNumber, Email, picture_filename in students %}
+        {% for name, role, major, PhoneNumber, email, picture_filename in students %}
             <div class="student-block">
                 <img src="{{ url_for('static', filename='picture/' + picture_filename) }}" alt="{{ name }}" style="width: 100%; height: auto; border-radius: 5px;">
                 <p><strong>이름:</strong> {{ name }}</p>
