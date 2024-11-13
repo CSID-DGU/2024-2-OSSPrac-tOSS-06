@@ -30,7 +30,7 @@ body {
 }
 
 /* 입력 블록 스타일 */
-.person-block {
+.student-block {
     width: 200px; /* 각 입력 블록의 너비 */
     padding: 10px;
     border: 1px solid #ccc;
