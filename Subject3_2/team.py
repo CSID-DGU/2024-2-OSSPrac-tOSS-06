@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
+import os
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'static/picture'
 
 # 최초 메인 페이지를 보여주는 루트 경로
 @app.route('/')
@@ -20,9 +22,21 @@ def result():
     names = request.form.getlist('name[]')
     student_numbers = request.form.getlist('StudentNumber[]')
 
+    
+    # 학생 정보 리스트 생성
+    students = []
+    for i in range(len(names)):
+        # 이름과 동일한 파일명으로 이미지를 찾음
+        picture_filename = f"{names[i]}.png"
+        picture_path = os.path.join(app.config['UPLOAD_FOLDER'], picture_filename)
+        
+        # 이름과 일치하는 사진 파일이 존재하지 않으면 기본 이미지 사용
+        if not os.path.isfile(picture_path):
+            picture_filename = "default.png"
+            
     # 데이터를 템플릿으로 전달하여 출력 페이지 생성
-    return render_template('result.html', students=zip(names, student_numbers))
-
+    return render_template('result.html', students=students))
+    
 @app.route('/contact')
 def contact_info():
     return render_template('contact.html')
