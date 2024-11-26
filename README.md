@@ -32,8 +32,7 @@
 
 #### 팀과제5 8번 요구사항 영상
 
-<video width="640" height="360" controls>
-  <source src="./tsub5_06_tOSS.mp4" type="video/mp4">
-  해당 브라우저는 동영상을 지원하지 않습니다. [여기를 클릭](./팀과제5_8번요구사항영상_06_tOSS.mp4)하여 동영상을 다운로드하세요.
-</video>
+[![동영상 보기](https://img.youtube.com/vi/1FV6s39ObU0/0.jpg)](https://youtu.be/1FV6s39ObU0)
+
+
 
