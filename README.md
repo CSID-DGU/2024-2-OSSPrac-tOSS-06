@@ -30,3 +30,10 @@
    ```
    또는 **Docker Dashboard**에서 해당 컨테이너를 클릭하여 **Logs**에서 로그를 확인합니다.
 
+#### 시연 영상
+
+
+<video width="640" height="360" controls>
+  <source src="https://github.com/CSID-DGU/2024-2-OSSPrac-tOSS-06/raw/sub5/팀과제5_8번요구사항영상_06_tOSS.mp4" type="video/mp4">
+  동영상 재생이 불가능한 경우, <a href="https://github.com/CSID-DGU/2024-2-OSSPrac-tOSS-06/raw/sub5/팀과제5_8번요구사항영상_06_tOSS.mp4">여기를 클릭</a>하여 동영상을 다운로드하세요.
+</video>
