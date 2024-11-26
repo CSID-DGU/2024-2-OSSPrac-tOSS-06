@@ -34,5 +34,5 @@
 
 [![동영상 보기](https://img.youtube.com/vi/1FV6s39ObU0/0.jpg)](https://youtu.be/1FV6s39ObU0)
 
-
+클릭 시 **유튜브**로 이동되며, 영상 파일은 **해당 브랜치 최상위 디렉토리**에 위치합니다.
 
