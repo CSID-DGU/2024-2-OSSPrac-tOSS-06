@@ -10,6 +10,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
+            flex-wrap: wrap;
         }
         .student-block {
             background-color: #f9f9f9;
@@ -24,14 +25,13 @@
             text-align: center;
         }
         body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
         }
     </style>
     <script>
@@ -46,26 +46,25 @@
 <body>
     <h1>6팀 tOSS를 소개합니다~</h1>
 
-
     <!-- BGM 재생 -->
     <audio autoplay loop>
         <source src="{{ url_for('static', filename='audio/bgm.mp3') }}" type="audio/mpeg">
     </audio>
     
     <div class="container">
-        {% for name, role, major, PhoneNumber, email, picture_filename in students %}
+        {% for student in students %}
             <div class="student-block">
-                <img src="{{ url_for('static', filename='picture/' + picture_filename) }}" alt="{{ name }}" style="width: 100%; height: auto; border-radius: 5px;">
-                <p><strong>이름:</strong> {{ name }}</p>
-                <p><strong>역할:</strong> {{ role }}</p>
-                <p><strong>학과:</strong> {{ major }}</p>
-                <p><strong>전화번호:</strong> {{ PhoneNumber }}</p>
-                <p><strong>이메일:</strong> {{ email }}</p>
+                <img src="http://localhost:8000/static/picture/{{ student.picture }}" alt="{{ student.name }}" style="width: 100%; height: auto; border-radius: 5px;">
+                <p><strong>이름:</strong> {{ student.name }}</p>
+                <p><strong>역할:</strong> {{ student.role }}</p>
+                <p><strong>학과:</strong> {{ student.major }}</p>
+                <p><strong>전화번호:</strong> {{ student.phone_number }}</p>
+                <p><strong>이메일:</strong> {{ student.email }}</p>
             </div>  
         {% endfor %}
     </div>
     <footer>
-        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button>
-    </footer> 
+        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button></h5>
+    </footer>
 </body>
 </html>
