@@ -1,0 +1,210 @@
+Started by user heejeong seo
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/hw6
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER or $DOCKER_PSW
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Prepare)
+[Pipeline] git
+The recommended git tool is: NONE
+Warning: CredentialId "github" could not be found.
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/hw6/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/CSID-DGU/2024-2-OSSPrac-tOSS-06.git # timeout=10
+Fetching upstream changes from https://github.com/CSID-DGU/2024-2-OSSPrac-tOSS-06.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+ > git fetch --tags --force --progress -- https://github.com/CSID-DGU/2024-2-OSSPrac-tOSS-06.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/hjtest^{commit} # timeout=10
+Checking out Revision d6114ab5f53cc5e65bf6d66c90010f8fd59e5fa7 (refs/remotes/origin/hjtest)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d6114ab5f53cc5e65bf6d66c90010f8fd59e5fa7 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D prac6 # timeout=10
+ > git checkout -b prac6 d6114ab5f53cc5e65bf6d66c90010f8fd59e5fa7 # timeout=10
+Commit message: "수정본"
+ > git rev-list --no-walk d6114ab5f53cc5e65bf6d66c90010f8fd59e5fa7 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ docker compose -f docker-compose.yml build frontapp backapp
+time="2024-11-30T14:09:14Z" level=warning msg="/var/jenkins_home/workspace/hw6/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+#0 building with "default" instance using docker driver
+
+#1 [backapp internal] load build definition from Dockerfile
+#1 transferring dockerfile: 314B done
+#1 DONE 0.0s
+
+#2 [frontapp internal] load build definition from Dockerfile
+#2 transferring dockerfile: 314B 0.0s done
+#2 DONE 0.0s
+
+#3 [frontapp internal] load metadata for docker.io/library/python:3.9
+#3 DONE 0.7s
+
+#4 [backapp internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [frontapp internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [frontapp 1/5] FROM docker.io/library/python:3.9@sha256:332741499f49a3f3e7749dad70e6ecf1129f00a269fdd6111da2ed2693fbe50e
+#6 DONE 0.0s
+
+#7 [backapp internal] load build context
+#7 transferring context: 497B 0.0s done
+#7 DONE 0.0s
+
+#8 [frontapp internal] load build context
+#8 transferring context: 491B done
+#8 DONE 0.0s
+
+#9 [backapp 3/5] COPY requirements.txt ./
+#9 CACHED
+
+#10 [backapp 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#10 CACHED
+
+#11 [backapp 5/5] COPY . .
+#11 CACHED
+
+#12 [frontapp 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#12 CACHED
+
+#13 [frontapp 3/5] COPY requirements.txt ./
+#13 CACHED
+
+#14 [frontapp 2/5] WORKDIR /app
+#14 CACHED
+
+#15 [frontapp 5/5] COPY . .
+#15 CACHED
+
+#16 [frontapp] exporting to image
+#16 exporting layers done
+#16 writing image sha256:12fad518d229572c98ff416d0ff16acd6fd7bae0951139a3d97fe82b2c123a2f 0.0s done
+#16 naming to docker.io/seoheejeong/frontapp:latest
+#16 naming to docker.io/seoheejeong/frontapp:latest done
+#16 DONE 0.0s
+
+#17 [backapp] exporting to image
+#17 exporting layers done
+#17 writing image sha256:89c9330a9d500f37095e1d30b915861d11e300f3dc8d54b21bb644afabd7fb69 done
+#17 naming to docker.io/seoheejeong/backapp:latest 0.0s done
+#17 DONE 0.0s
+
+#18 [frontapp] resolving provenance for metadata file
+#18 DONE 0.0s
+
+#19 [backapp] resolving provenance for metadata file
+#19 DONE 0.0s
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Tag)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ docker tag seoheejeong/frontapp:latest seoheejeong/frontapp:latest
+[Pipeline] sh
++ docker tag seoheejeong/backapp:latest seoheejeong/backapp:latest
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [DOCKER_PSW]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ docker login -u seoheejeong -p ****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+[Pipeline] sh
++ docker push seoheejeong/frontapp:latest
+The push refers to repository [docker.io/seoheejeong/frontapp]
+68ab046554f0: Preparing
+206e26850bbb: Preparing
+1f7b7b54388d: Preparing
+7ebe1b05fc97: Preparing
+6f48ad948751: Preparing
+1354cd991b1c: Preparing
+68fff311c877: Preparing
+96d99c63b722: Preparing
+00547dd240c4: Preparing
+b6ca42156b9f: Preparing
+24b5ce0f1e07: Preparing
+68fff311c877: Waiting
+96d99c63b722: Waiting
+00547dd240c4: Waiting
+24b5ce0f1e07: Waiting
+b6ca42156b9f: Waiting
+1354cd991b1c: Waiting
+6f48ad948751: Layer already exists
+206e26850bbb: Layer already exists
+7ebe1b05fc97: Layer already exists
+1f7b7b54388d: Layer already exists
+68ab046554f0: Layer already exists
+1354cd991b1c: Layer already exists
+68fff311c877: Layer already exists
+96d99c63b722: Layer already exists
+00547dd240c4: Layer already exists
+b6ca42156b9f: Layer already exists
+24b5ce0f1e07: Layer already exists
+latest: digest: sha256:a6e42e8e5328d23d26e4d420b849508ebbe32c5ab012448351a14436257f9224 size: 2631
+[Pipeline] sh
++ docker push seoheejeong/backapp:latest
+The push refers to repository [docker.io/seoheejeong/backapp]
+671497f897d5: Preparing
+8e305d78a176: Preparing
+f3fafd9f6d67: Preparing
+7ebe1b05fc97: Preparing
+6f48ad948751: Preparing
+1354cd991b1c: Preparing
+68fff311c877: Preparing
+96d99c63b722: Preparing
+00547dd240c4: Preparing
+b6ca42156b9f: Preparing
+24b5ce0f1e07: Preparing
+96d99c63b722: Waiting
+1354cd991b1c: Waiting
+68fff311c877: Waiting
+24b5ce0f1e07: Waiting
+00547dd240c4: Waiting
+b6ca42156b9f: Waiting
+6f48ad948751: Layer already exists
+7ebe1b05fc97: Layer already exists
+8e305d78a176: Layer already exists
+671497f897d5: Layer already exists
+f3fafd9f6d67: Layer already exists
+1354cd991b1c: Layer already exists
+68fff311c877: Layer already exists
+00547dd240c4: Layer already exists
+b6ca42156b9f: Layer already exists
+96d99c63b722: Layer already exists
+24b5ce0f1e07: Layer already exists
+latest: digest: sha256:d94a37924c37e83a70566ab45e86f3a1fa5c7ef920168892ff032b5361540585 size: 2631
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
