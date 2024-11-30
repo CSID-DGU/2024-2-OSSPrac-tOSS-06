@@ -1,25 +1,14 @@
-# docker-compose.yml
+version: "3.0"  # Docker Compose 최신 버전 사용 권장
 
-version: "3.0"                 # docker compose 파일의 버전
+services:
+  frontapp:
+    image: $seoheejeong/front:latest  # Docker Hub 이미지 참조
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backapp
 
-services: # 아래는 서비스 정의  
-   frontapp:                   # service1의 명칭  
-      # 서비스 빌드를 위한 정의 내용
-      build: ./FrontEnd
-      image: whmark/front:latest
-      # container_name: frontapp
-      ports: 
-         - "3000:3000"
-      depends_on:
-         - backapp
-
-
-   backapp:                   # service2의 명칭  
-      # 서비스 빌드를 위한 정의 내용
-      build: ./BackEnd
-      image: whmark/back:latest
-      # container_name: backapp
-      ports:
-        - "8000:8000"
-
-    
+  backapp:
+    image: $seoheejeong/front:latest # Docker Hub 이미지 참조
+    ports:
+      - "8000:8000"
