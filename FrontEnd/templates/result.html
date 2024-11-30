@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 구성원 정보 출력</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .student-block {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+    </style>
+    <script>
+        function showContactInfo() {
+            alert("긴급전화: 010-1234-5678");
+        }
+        function openContactPage() {
+            window.open("/contact", "contactPage", "width=600,height=400");
+        }
+    </script>
+</head>
+<body>
+    <h1>6팀 tOSS를 소개합니다~</h1>
+
+    <!-- BGM 재생 -->
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='audio/bgm.mp3') }}" type="audio/mpeg">
+    </audio>
+    
+    <div class="container">
+        {% for student in students %}
+            <div class="student-block">
+                <img src="http://localhost:8000/static/picture/{{ student.picture }}" alt="{{ student.name }}" style="width: 100%; height: auto; border-radius: 5px;">
+                <p><strong>이름:</strong> {{ student.name }}</p>
+                <p><strong>역할:</strong> {{ student.role }}</p>
+                <p><strong>학과:</strong> {{ student.major }}</p>
+                <p><strong>전화번호:</strong> {{ student.phone_number }}</p>
+                <p><strong>이메일:</strong> {{ student.email }}</p>
+            </div>  
+        {% endfor %}
+    </div>
+    <footer>
+        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button></h5>
+    </footer>
+</body>
+</html>
