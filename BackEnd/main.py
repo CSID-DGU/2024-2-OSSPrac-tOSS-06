@@ -48,4 +48,5 @@ def serve_picture(filename):
         return "File not found", 404
 
 if __name__ == '__main__':
+    # Docker 환경에서 외부 접근을 위해 host='0.0.0.0' 설정
     app.run(host='0.0.0.0', port=8000, debug=True)

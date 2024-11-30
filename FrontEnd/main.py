@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import requests  # BackEnd와 통신하기 위해 사용
-import logging # 로그 메시지 확인용
+import logging  # 로그 메시지 확인용
 
 app = Flask(__name__)
 
@@ -23,7 +23,7 @@ def result():
     majors = request.form.getlist('major[]')
     phone_numbers = request.form.getlist('PhoneNumber[]')
     emails = request.form.getlist('email[]')
-    
+
     # BackEnd에 전달할 데이터 생성
     payload = {
         "names": names,
@@ -32,15 +32,16 @@ def result():
         "phone_numbers": phone_numbers,
         "emails": emails
     }
-    
+
     # BackEnd API 호출
     try:
         response = requests.post("http://backapp:8000/process_students", json=payload)
+        response.raise_for_status()  # HTTP 에러 발생 시 예외 처리
         students = response.json()  # BackEnd에서 받은 데이터
-    except Exception as e:
-        print("Error communicating with BackEnd:", e)
+    except requests.exceptions.RequestException as e:
+        app.logger.error(f"Error communicating with BackEnd: {e}")
         students = []  # 에러 발생 시 빈 리스트 반환
-    
+
     # 결과 페이지 렌더링
     return render_template('result.html', students=students)
 
@@ -53,4 +54,5 @@ logging.basicConfig(level=logging.DEBUG)
 app.logger.setLevel(logging.DEBUG)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    # 포트를 80으로 변경하여 Docker Compose와 일치시킴
+    app.run(host='0.0.0.0', port=80, debug=True)
